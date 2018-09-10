@@ -1,0 +1,50 @@
+plugins {
+  id "com.github.samueltbrown.cucumber" version "0.9"
+}
+
+ext {
+  cucumberGroup = 'io.cucumber'   // 'info.cukes'
+  cucumberJvmVersion = '2.0.1'  //'1.2.2'
+}
+
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://repo.jenkins-ci.org/public/"
+    }
+    maven {
+        url "http://repo.jenkins-ci.org/releases/"
+    }
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.13'
+
+    cucumberCompile group: "${cucumberGroup}", name: 'cucumber-core', version: "${cucumberJvmVersion}"
+    cucumberCompile group: "${cucumberGroup}", name: 'cucumber-groovy', version: "${cucumberJvmVersion}"
+    cucumberCompile group: 'org.yaml', name: 'snakeyaml', version: '1.22'
+}
+
+cucumber {
+  formats = [
+    'pretty',
+    'html:build/reports/cucumber',
+    'junit:build/cucumber.xml'
+  ]
+  glueDirs = ['test/cucumber/steps']
+}
+
+sourceSets {
+    cucumber {
+        groovy { srcDirs = ['test/cucumber/'] }
+        resources { srcDirs = ['test/cucumber/features'] }
+    }
+    test {
+        groovy { srcDirs = ['test/helperTest'] }
+    }
+    main {
+        groovy { srcDirs = ['src','vars'] } // This would compile all vars/*, including them in each other's classpaths
+    }
+}

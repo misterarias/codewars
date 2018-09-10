@@ -3,3 +3,4 @@ groovy/build
 groovy/.gradle
 node_modules/
 sparkScala/target/
+scala/target/

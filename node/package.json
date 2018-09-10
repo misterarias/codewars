@@ -1,0 +1,31 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "Node.js + Cucumber bootstrap project",
+  "main": "index.js",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "cucumber": "^5.0.0"
+  },
+  "dependencies": {},
+  "scripts": {
+    "test": "./node_modules/.bin/cucumber-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/misterarias/codewars.git"
+  },
+  "keywords": [
+    "nodejs",
+    "cucumber",
+    "codewars",
+    "tdd",
+    "bdd"
+  ],
+  "author": "Juan Arias",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/misterarias/codewars/issues"
+  },
+  "homepage": "https://github.com/misterarias/codewars#readme"
+}

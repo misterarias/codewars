@@ -4,5 +4,5 @@ WORKDIR /go/src/folder
 COPY basename/ .
 # RUN go get -d
 ENV CGO_ENABLED=0 GOOS=linux GOARCH=amd64
-RUN ["go", "test"]
+CMD ["go", "test"]
 

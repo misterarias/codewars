@@ -9,11 +9,14 @@ describe('permutations', function() {
     {in: [1], out: [[1]]},
     {in: [1, 3], out: [[1, 3], [3,1]]},
     {in: [3, 1], out: [[1, 3], [3,1]]},
+    {in: [1, 3, 5], out: [
+      [1, 3, 5], [1, 5, 3], [3,1,5],[3,5,1],[5,1,3],[5,3,1]
+    ]},
   ].forEach( (t) => {
-    it(`of [${t.in}] should be ${JSON.stringify(t.out)}`, function() {
-      var sorted_in = permutations(t.in);
-      var sorted_out = t.out;
-      expect(sorted_in).to.deep.equal(sorted_out);
+    var sorted_out = JSON.stringify(t.out.sort());
+    it(`of [${t.in}] should be ${sorted_out}`, function() {
+      var sorted_in = JSON.stringify(permutations(t.in).sort());
+      expect(sorted_in).to.equal(sorted_out);
     });
   })
 });

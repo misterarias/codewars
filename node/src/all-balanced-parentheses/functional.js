@@ -19,13 +19,14 @@ var rotations = (ar) => {
   return output ;
 };
 
-var permutations = (array) => {
-  return rotations(array).map( ar => {
-    var h = head(ar), t = tail(ar);
+var permutations = (ar) => {
+  var perms = rotations(ar).map( x => {
+    var h = head(x), t = tail(x);
     if (t.length < 1) { return [h] }
     if (t.length == 1){ return t.concat(h); }
-    return permutations(t).concat(h);
-  }).sort();
+    return permutations(t).map( (item) => item.concat(h) );
+  });
+  return perms;
 }
 
 module.exports = permutations;

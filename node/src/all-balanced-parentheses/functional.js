@@ -19,20 +19,13 @@ var rotations = (ar) => {
   return output ;
 };
 
-var permutations = (ar) => {
-  var h = head(ar), t = tail(ar);
-  if (t.length < 1) { return [h] }
-  if (t.length == 1){ return t.concat(h); }
-  return rotations(t).map( permutations ).concat(h) ;
+var permutations = (array) => {
+  return rotations(array).map( ar => {
+    var h = head(ar), t = tail(ar);
+    if (t.length < 1) { return [h] }
+    if (t.length == 1){ return t.concat(h); }
+    return permutations(t).concat(h);
+  }).sort();
 }
 
-// TESTING AREA
-[
-  [1],
-  [1, 3],
-  [1, 3, 5],
-].forEach( (t) => {
-  console.log(`permutations([${t}]) == `, permutations(t)) ;
-});
-
-
+module.exports = permutations;

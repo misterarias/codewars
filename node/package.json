@@ -3,13 +3,10 @@
   "version": "1.0.0",
   "description": "Node.js + Cucumber bootstrap project",
   "main": "index.js",
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "cucumber": "^5.0.0"
-  },
   "dependencies": {},
   "scripts": {
-    "test": "./node_modules/.bin/cucumber-js"
+    "bdd": "./node_modules/.bin/cucumber-js",
+    "tdd": "./node_modules/.bin/mocha --recursive --watch"
   },
   "repository": {
     "type": "git",
@@ -27,5 +24,10 @@
   "bugs": {
     "url": "https://github.com/misterarias/codewars/issues"
   },
-  "homepage": "https://github.com/misterarias/codewars#readme"
+  "homepage": "https://github.com/misterarias/codewars#readme",
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "chai": "^4.1.2",
+    "cucumber": "^5.0.0"
+  }
 }
